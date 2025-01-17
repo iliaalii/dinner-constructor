@@ -8,7 +8,7 @@ public class DinnerConstructor {
     HashMap<String, ArrayList<String>> menuResto = new HashMap<>();
 
     void addNewDishInMenu(String type, String dish) { // добавьте новое блюдо
-        if(checkType(type)) {
+        if (checkType(type)) {
             ArrayList<String> listDish = menuResto.get(type);
             listDish.add(dish);
             menuResto.put(type, listDish);
@@ -19,23 +19,20 @@ public class DinnerConstructor {
         }
     }
 
-    void generateCombos(int number, ArrayList types) { //генерация комбинаций
-        ArrayList<String> typesForCombos = types;
-
-
-        for (int i = 0; i < number; i++){
+    void generateCombos(int number, ArrayList<String> types) { //генерация комбинаций
+        for (int i = 0; i < number; i++) {
             ArrayList<String> comboList = new ArrayList<>();
-            for (String type : typesForCombos){
+            for (String type : types) {
                 ArrayList<String> dishList = menuResto.get(type);
                 int randomNumber = new Random().nextInt(dishList.size());
                 comboList.add(dishList.get(randomNumber));
             }
-            System.out.println("Комбо " + i);
-            System.out.println(comboList.get(i));
+            System.out.println("Комбо " + (i + 1));
+            System.out.println(comboList);
         }
     }
 
-    boolean checkType(String type){
+    boolean checkType(String type) { // проверка наличия типа еды
         return menuResto.containsKey(type);
     }
 }
