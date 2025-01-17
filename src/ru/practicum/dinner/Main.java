@@ -1,6 +1,7 @@
 package ru.practicum.dinner;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -40,8 +41,7 @@ public class Main {
         String dishType = scanner.nextLine();
         System.out.println("Введите название блюда:");
         String dishName = scanner.nextLine();
-
-        // добавьте новое блюдо
+        dc.addNewDishInMenu(dishType, dishName); // добавьте новое блюдо
     }
 
     private static void generateDishCombo() {
@@ -55,11 +55,12 @@ public class Main {
         String nextItem = scanner.nextLine();
 
         //реализуйте ввод типов блюд
+        ArrayList<String> typesForCombos = new ArrayList<>();
         while (!nextItem.isEmpty()) {
-
+            typesForCombos.add(nextItem);
+            nextItem = scanner.nextLine();
         }
-
         // сгенерируйте комбинации блюд и выведите на экран
-
+        dc.generateCombos(numberOfCombos, typesForCombos);
     }
 }
